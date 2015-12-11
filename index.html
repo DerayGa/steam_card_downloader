@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+		<style>
+		*{
+			font-size: 22px;
+		}
+		#cardUrl, #cardHTML{
+			width:600px;
+		}
+		#cardHTML{
+			height:200px;
+		}
+		#Submit{
+			font-size: 62px;
+			width:600px;
+			height:120px;
+			background-color: #0087dc;
+			color:white;
+		}
+		</style>
+	</head>
+	<body>
+		<form action='/card' method='post'>
+		  <input type='text' id='cardUrl' name='cardUrl' placeholder='http://steamcommunity.com/id/deray/gamecards/730/'/>
+		  <br>
+		  <br>
+		  <textarea id='cardHTML' name='cardHTML' placeholder='HTML'></textarea>
+		  <br>
+		  <br>
+		  <input id='Submit' type='submit' value='Submit'/>
+		</form>
+
+	<script type='text/javascript'>
+		if(window.location.href.indexOf('?progress') > 0)
+			alert('Check your [steam_card_downloader] folder for surprise!')
+	</script>
+	</body>
+</html>
