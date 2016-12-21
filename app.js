@@ -7,10 +7,10 @@ var wget = require('wget');
 var mkdirp = require('mkdirp');
 
 var app = express();
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use( bodyParser.json({limit:'50mb'}) );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-})); 
+  extended: true, limit:'50mb'
+}));
 
 app.get('/', function (req, res) {
 	res.sendfile('index.html');
@@ -70,7 +70,7 @@ function cardDownloader(htmlData){
 					var src = attribs.onclick;
 					src = src.substring(0, src.lastIndexOf('"'));
 					src = src.substr(src.lastIndexOf('"')+1);
-					
+
 					cardFullSRCs.push(src.replace(/\\/g, ''));
 				}
 			}
@@ -127,8 +127,10 @@ function cardDownloader(htmlData){
 						wget.download(cardSRCs[index], path + '/' + cardNames[index] + smallExt + '.jpg'); 
 					}
 
-					if(cardFullSRCs[index])
+					if(cardFullSRCs[index]) {
+						console.log('path', cardFullSRCs[index]);
 						wget.download(cardFullSRCs[index], path + '/' + cardNames[index] + '.jpg'); 
+					}
 				}
 			});
 	    }
