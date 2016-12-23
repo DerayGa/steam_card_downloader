@@ -128,7 +128,6 @@ function cardDownloader(htmlData){
 					}
 
 					if(cardFullSRCs[index]) {
-						console.log('path', cardFullSRCs[index]);
 						wget.download(cardFullSRCs[index], path + '/' + cardNames[index] + '.jpg'); 
 					}
 				}
